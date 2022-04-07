@@ -99,12 +99,12 @@ def cancle_order(coin,order_id,price,qty):
 
 
 def limit_buy(coin,price,qty):
-    url = 'v2/order/limit_buy'
+    url = 'v2/order/limit_buy/'
 
     payload = {
         'access_token': access_key,
-        'price': price,
-        'qty': qty,
+        'price': int(price),
+        'qty': float(qty),
         'currnecy': coin,
 
     }
@@ -115,7 +115,7 @@ def limit_buy(coin,price,qty):
 
 
 def limit_sell(coin,price,qty):
-    url = 'v2/order/limit_sell'
+    url = 'v2/order/limit_sell/'
 
     payload = {
         'access_token': access_key,
@@ -131,7 +131,7 @@ def limit_sell(coin,price,qty):
 
 
 def limit_orders(coin,price,qty):
-    url = 'v2/order/limit_orders'
+    url = 'v2/order/limit_orders/'
 
     payload = {
         'access_token': access_key,
@@ -145,7 +145,7 @@ def limit_orders(coin,price,qty):
 
 
 def complete_orders(coin,price,qty):
-    url = 'v2/order/complete_orders'
+    url = 'v2/order/complete_orders/'
 
     payload = {
         'access_token': access_key,
@@ -159,7 +159,7 @@ def complete_orders(coin,price,qty):
 
 
 def order_information(coin,order_id):
-    url = 'v2/order/complete_orders'
+    url = 'v2/order/complete_orders/'
 
     payload = {
         'access_token': access_key,
@@ -174,7 +174,7 @@ def order_information(coin,order_id):
 
 
 def coin_transaction_history(coin):
-    url = 'v2/order/complete_orders'
+    url = 'v2/order/complete_orders/'
 
     payload = {
         'access_token': access_key,
@@ -185,3 +185,5 @@ def coin_transaction_history(coin):
     response = get_response(url, payload)
 
     return response
+
+#print(limit_sell('BTC',53600000,0.0001))
