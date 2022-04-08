@@ -16,14 +16,11 @@
         <br>
         <a href="/register">회원가입</a>
         <a href="/login">로그인</a>
-<!--        {%if userid%}-->
+        <br>
+        {%if session['userid'] %}
         {{session['userid']}}<a>님 안녕하세요!</a><br><a href="/logout">로그아웃</a>
-<!--        {%endif%}-->
-        <div class=form-group>
-            {%if userid%}
-            {{userid}}<a>님 안녕하세요!</a><br>
-            <a href="/logout">로그아웃</a>
-            {%endif%}
+        {%endif%}
+
         </div>
     </div>
 </body>
