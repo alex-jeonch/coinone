@@ -22,16 +22,23 @@ def register():
         userid = request.form.get('userid')
         email = request.form.get('email')
         password = request.form.get('password')
-        #re_password = request.form['re-password']
+        re_password = request.form['re_password']
 
-        #if (userid and email and password and re_password) and password == re_password:
-        fcuser = User()
-        fcuser.userid = userid
-        fcuser.email = email
-        fcuser.password = password
+        if not (userid and email and password and re_password):
+            return "입력되지 않은 정보가 있습니다"
+        elif password != re_password:
+            return "비밀번호가 일치하지 않습니다"
+        else:
+            fcuser = User()
+            fcuser.userid = userid
+            fcuser.email = email
+            fcuser.password = password
 
-        db.session.add(fcuser)
-        db.session.commit()
+            db.session.add(fcuser)
+            db.session.commit()
+
+
+            return render_template('main.html')
 
         return redirect('/')
 
@@ -53,6 +60,8 @@ def login():
 def logout():
     session.pop('userid', None)
     return redirect('/')
+
+
 
 
 if __name__ == "__main__":
